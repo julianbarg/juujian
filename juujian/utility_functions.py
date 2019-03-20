@@ -7,7 +7,7 @@ def verify(item: list):
     :param item: The list to verify.
     :return: First item of the list (or complete string, if string was passed in instead).
     """
-    if isinstance(item):
+    if isinstance(item, str):
         return item
 
     if item:
