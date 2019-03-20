@@ -1,6 +1,6 @@
 def verify(item: list):
     """
-    In webscraping applications, we often receive lists where we would want strings. Using foo[0] often gives an error
+    In web scraping applications, we often receive lists where we would want strings. Using foo[0] often gives an error
     because the list may be empty (or we may have even received an empty string). Verify() verifies that the passed in
     list is not empty and returns the first item in the list. If the passed in item is a string instead, the string will
     be returned.
