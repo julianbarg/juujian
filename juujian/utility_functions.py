@@ -5,13 +5,20 @@ def verify(item: list):
     list is not empty and returns the first item in the list. If the passed in item is a string instead, the string will
     be returned.
     :param item: The list to verify.
-    :return: First item of the list (or complete string, if string was passed in instead).
-    """
-    if isinstance(item, str):
-        return item
+    :return: First item of the list (or complete string, if string was passed in instead), or string representation.
 
-    if item:
+    >>>verify('abc')
+    'abc'
+    >>>verify(['abc'])
+    'abc'
+    >>>verify(['a', 'b', 'c'])
+    "['a', 'b', 'c']"
+    """
+    if isinstance(item, list) and len(item) == 1:
         return item[0]
+
+    else:
+        return item.__str__()
 
 
 def find_index(item: str, _list: list, else_return=9999):
@@ -24,6 +31,7 @@ def find_index(item: str, _list: list, else_return=9999):
     :param _list: List in which to look up the item.
     :param else_return: Alternative value to return if item not in list.
     :return: Index (or placeholder value).
+
     """
     if item in _list:
         return _list.index(item)
