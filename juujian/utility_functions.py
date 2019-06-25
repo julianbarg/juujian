@@ -14,7 +14,12 @@ def verify(item: list):
     >>>verify(['a', 'b', 'c'])
     "['a', 'b', 'c']"
     """
-    if isinstance(item, list) and len(item) == 1:
+    if 'item' not in locals():
+        item = ''
+        return item
+        # Could alternatively return '', but this is more readable.
+
+    elif isinstance(item, list) and len(item) == 1:
         return item[0]
 
     else:
