@@ -1,11 +1,13 @@
-def verify(item: list):
+def verify(item: list, default_to_empty=True):
     """
     In web scraping applications, we often receive lists where we would want strings. Using foo[0] often gives an error
     because the list may be empty (or we may have even received an empty string). Verify() verifies that the passed in
     list is not empty and returns the first item in the list. If the passed in item is a string instead, the string will
     be returned.
     :param item: The list to verify.
+    :param default_to_empty: If True, verify() will return empty string if item does not exist in local.
     :return: First item of the list (or complete string, if string was passed in instead), or string representation.
+    If item does not exist in local, returns empty string if default_to_empty is True.
 
     >>>verify('abc')
     'abc'
@@ -14,16 +16,24 @@ def verify(item: list):
     >>>verify(['a', 'b', 'c'])
     "['a', 'b', 'c']"
     """
-    if 'item' not in locals():
-        item = ''
-        return item
-        # Could alternatively return '', but this is more readable.
+    if default_to_empty:
+        if 'item' not in locals():
+            item = ''
+            return item
+            # Could alternatively return '', but this is more readable.
 
-    elif isinstance(item, list) and len(item) == 1:
-        return item[0]
+        elif isinstance(item, list) and len(item) == 1:
+            return item[0]
+
+        else:
+            return item.__str__()
 
     else:
-        return item.__str__()
+        if isinstance(item, list) and len(item) == 1:
+            return item[0]
+
+        else:
+            return item.__str__()
 
 
 def find_index(item: str, _list: list, else_return=9999):
