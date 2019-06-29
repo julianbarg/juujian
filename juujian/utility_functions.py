@@ -35,6 +35,23 @@ def verify(item: list, default_to_empty=True):
         else:
             return item.__str__()
 
+def clean_list(item: list, remove_str_control=True, remove_empty=True):
+    """
+    When scraping information from the internet, lists sometimes have rows in them that consist just of newline
+    characters, or newline characters might be at the beginning or end of rows in the list. This function cleans a list
+    so that only rows with content are retained, and rows are also stripped of any string control characters.
+    :param item: A list.
+    :param remove_str_control: Should string control characters be removed?
+    :param remove_empty: Should empty rows be removed?
+    :return: Cleaned list.
+    """
+    if remove_str_control:
+        item = [' '.join(row.split()) for row in item]
+    else:
+        item = [row.strip() for row in item]
+    if remove_empty:
+        item = [row for row in item if row]
+    return item
 
 def find_index(item: str, _list: list, else_return=9999):
     """
