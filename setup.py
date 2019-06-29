@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 
 setuptools.setup(name='juujian',
-                 version='0.0.7',
+                 version='0.0.8',
                  description='Various web scraping and data science related tools. ',
                  long_description=long_description,
                  long_description_content_type='text/markdown',
